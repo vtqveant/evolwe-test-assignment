@@ -1,0 +1,11 @@
+/target
+/.idea
+/*.iml
+/.classpath
+/*.eml
+/.project
+/data/dataset/
+/docs/
+/notebooks/.ipynb_checkpoints/
+/src/__pycache__/
+/venv/
