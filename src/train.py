@@ -58,8 +58,8 @@ def main():
                         help='input batch size for testing (default: 20)')
     parser.add_argument('--epochs', type=int, default=3, metavar='N',
                         help='number of epochs to train (default: 3)')
-    parser.add_argument('--lr', type=float, default=0.001, metavar='LR',
-                        help='learning rate (default: 0.001)')
+    parser.add_argument('--lr', type=float, default=0.0001, metavar='LR',
+                        help='learning rate (default: 0.0001)')
     parser.add_argument('--log-interval', type=int, default=10, metavar='N',
                         help='how many batches to wait before logging training status')
     parser.add_argument('--no-cuda', action='store_true', default=False,
@@ -93,7 +93,8 @@ def main():
 
     train_dataset = HelloEvolweDataset(
         filename='../data/hello_nova_intents_0.2.2.yaml',
-        label_tracker=DictLabelTracker()
+        label_tracker=DictLabelTracker(),
+        shuffle=True
     )
     train_loader = DataLoader(train_dataset, **train_kwargs)
 

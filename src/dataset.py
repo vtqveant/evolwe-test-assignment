@@ -1,14 +1,18 @@
 import yaml
+import random
 from torch.utils.data.dataset import IterableDataset
 from src.label_tracker import LabelTracker, DictLabelTracker
 
 
 class HelloEvolweDataset(IterableDataset):
-    def __init__(self, filename: str, label_tracker: LabelTracker):
+    def __init__(self, filename: str, label_tracker: LabelTracker, shuffle=True):
         super(HelloEvolweDataset, self).__init__()
         self.label_tracker = label_tracker
         self.filename = filename
         self.samples = self._load()
+        if shuffle:
+            random.shuffle(self.samples)
+
 
     def __iter__(self):
         for i, row in enumerate(self.samples):
@@ -28,6 +32,9 @@ class HelloEvolweDataset(IterableDataset):
                 for example in entry['examples']:
                     samples.append((example, intent))
         return samples
+
+    def __len__(self):
+        return len(self.samples)
 
 
 def main():
