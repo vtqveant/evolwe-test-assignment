@@ -1,0 +1,473 @@
+,text,intent
+0,Hi,Hello
+1,Hello,Hello
+2,"Hi, bot",Hello
+3,Good morning,Hello
+4,Good afternoon,Hello
+5,Good evening,Hello
+6,Morning,Hello
+7,Evening,Hello
+8,Hey,Hello
+9,Good day,Hello
+10,How are you?,How are you?
+11,What's up?,How are you?
+12,So how you been?,How are you?
+13,How you diddling?,How are you?
+14,"How are you, baby?",How are you?
+15,How you doing?,How are you?
+16,How are doing?,How are you?
+17,"What up, girl?",How are you?
+18,Howdy,How are you?
+19,How is it coming?,How are you?
+20,HI bot wassup?,How are you?
+21,What is this for?,other
+22,How can you help me?,How can you help me?
+23,How do you want to help me?,How can you help me?
+24,How will you assist me?,How can you help me?
+25,What will you use to support me and help with negative conditions?,How can you help me?
+26,What can you do to help me?,How can you help me?
+27,What does your help consist of?,How can you help me?
+28,How are you gonna help me?,How can you help me?
+29,How are you trying to help me?,How can you help me?
+30,How do you expect to help me?,How can you help me?
+31,How are you going to assist me?,How can you help me?
+33,What can you do for me?,What can you do for me?
+34,What are you able to do for me?,What can you do for me?
+35,What abilities do you have?,What can you do for me?
+36,What are your abilities?,What can you do for me?
+37,What skills do you have?,What can you do for me?
+38,What are you capable of?,What can you do for me?
+39,How does it work?,How does it work?
+40,What can you do?,How does it work?
+42,What is your purpose?,How does it work?
+43,What do you do?,How does it work?
+44,How do you work?,How does it work?
+45,What are you about?,How does it work?
+46,What are your functions?,How does it work?
+47,How will you help me?,How does it work?
+49,What do you know?,How does it work?
+50,How is it going?,How does it work?
+51,What is your aim?,How does it work?
+52,What are you meant for?,How does it work?
+53,How do you operate?,How does it work?
+54,What are your responsibilities?,How does it work?
+55,What are you designed to?,How does it work?
+61,How do you function?,How does it work?
+62,What is the purpose of your work?,How does it work?
+63,What is the point of your work?,How does it work?
+64,For what purpose are you created?,How does it work?
+65,For what reason do you work?,How does it work?
+66,What is the aim of your work?,How does it work?
+69,Why can't you understand me?,other
+70,Are you based on astrology?,other
+71,What are you based on?,other
+72,Why do i need you?,Why do i need you?
+73,What makes you think I need you?,Why do i need you?
+74,Do you know why I need you?,Why do i need you?
+75,Why do I need your help?,Why do i need you?
+76,Why would I need you?,Why do i need you?
+77,Why would you be necessary to me?,Why do i need you?
+78,Why is coaching important?,Why is coaching important?
+79,Why do I need the coach?,Why is coaching important?
+80,Why do I need coaching?,Why is coaching important?
+81,Is that really what I need?,Why is coaching important?
+82,Is it an effective instrument?,Why is coaching important?
+83,Is coaching really helpful?,Why is coaching important?
+84,Are you sure that coaching will be useful to me?,Why is coaching important?
+85,How can coaching help me?,Why is coaching important?
+86,Why is coaching relevant?,Why is coaching important?
+87,What is the purpose of coaching?,Why is coaching important?
+88,What is your name?,ask_name
+89,What's your name?,ask_name
+90,What can I call you?,ask_name
+91,May I know your name?,ask_name
+92,What do people call you?,ask_name
+93,Do you have a name for yourself?,ask_name
+94,Could you tell me your name?,ask_name
+95,Tell me your name.,ask_name
+96,How are you called?,ask_name
+97,"But, tell me, what do they call you?""",ask_name
+98,Get me a name.,ask_name
+99,Got a name?,ask_name
+100,What’s your name?,ask_name
+101,"hello, what is ur name?",ask_name
+102,Who are U?,who_are_you
+103,Who are You?,who_are_you
+104,What are you?,who_are_you
+105,what is you?,who_are_you
+106,Are our conversations private?,(1) security
+107,Is our conversation confidential?,(1) security
+108,Is it private?,(1) security
+109,Are my problems confidential?,(1) security
+110,Are we talking privately?,(1) security
+111,Are you connected with Russian hackers?,(2) security
+112,Are you sure you don’t work with hackers?,(2) security
+113,Will you upload my data to the network?,(2) security
+114,Will you give my data to hackers?,(2) security
+115,Do you have hacking skills?,(2) security
+116,Are you working legally?,(3) security
+117,Do you have a license?,(3) security
+118,Do you really have the right to provide psychological assistance?,(3) security
+119,Are your actions legal?,(3) security
+120,Are you a licensed specialist?,(3) security
+121,How could I trust you?,(4) security
+122,Can I trust you 100%?,(4) security
+123,Is confidentiality proven?,(4) security
+124,Can you prove that it’s confidential?,(4) security
+125,Is the system private?,(4) security
+126,What measures do you take to ensure the privacy of our conversation?,(5) security
+127,How could I be sure that you won’t give to others the information I provide to you?,(5) security
+128,Do you perform some encryption of the information?,(5) security
+129,What services are provided for privacy? Could you prove your privacy?,(5) security
+130,How can I be sure that our conversation is confidential?,(5) security
+131,"I’m worried about privacy, how can I be sure of it?",(5) security
+132,Do you have any proof of confidentiality?,(5) security
+133,Can you convince me of my privacy?,(5) security
+134,Why I shouldn't worry about my privacy?,(5) security
+135,Can I trust you?,(6) security
+136,Are you able to keep secrets?,(6) security
+137,Will you reveal my secrets to anyone?,(6) security
+138,Why can I trust you?,(6) security
+139,Is it possible to reveal our conversation to anyone?,(6) security
+140,Can I speak with you instead of going to a therapist?,(1) replacement
+141,Can you replace a psychologist?,(1) replacement
+142,Do you provide assistance at the level of a psychotherapist?,(1) replacement
+143,What should I choose: you or a therapist?,(1) replacement
+144,Who should I choose between you and a therapist?,(1) replacement
+145,Are you like my friend?,(2) replacement
+146,Can you replace friends?,(2) replacement
+147,Can I talk to you as a friend?,(2) replacement
+148,Can we be honest with each other as friends?,(2) replacement
+149,Can I talk to you instead of talking to a friend?,(2) replacement
+150,Why are you better than a specialist?,(3) replacement
+151,Why should I talk to you instead of a therapist?,(3) replacement
+152,Are you better than a shrink?,(3) replacement
+153,Why am I not supposed to go to the mental health specialist?,(3) replacement
+154,What is your advantage over a therapist?,(3) replacement
+155,How are you learning?,(1) knowledge
+156,Are you familiar with scientific materials on psychology?,(1) knowledge
+157,Do you have any qualifications in psychology?,(1) knowledge
+158,Is your knowledge based on psychology?,(1) knowledge
+159,Do you really rely on medicine?,(1) knowledge
+160,What are the main psychological concepts you are familiar with?,(2) knowledge
+161,What are your main areas of expertise?,(2) knowledge
+162,What psychological direction do you prefer and be aware of?,(2) knowledge
+163,Are you familiar with existential psychology?,(2) knowledge
+164,Do you know the CBT technique?,(2) knowledge
+165,Where does your knowledge come from?,(3) knowledge
+166,Where do you get the information to answer my question?,(3) knowledge
+167,Do you have any resources with information?,(3) knowledge
+168,Where do you take your knowledge from?,(3) knowledge
+169,Are you able to answer any question in the world?,(3) knowledge
+170,Who is your creator?,(1) creator
+171,Who created you?,(1) creator
+172,Who were you created by?,(1) creator
+173,Who is your author?,(1) creator
+174,Are you created by humans?,(1) creator
+175,Is your effectiveness proven?,(1) effectiveness
+176,Are there any reviews regarding your work?,(1) effectiveness
+177,Do you really help your clients?,(1) effectiveness
+178,Are your clients satisfied?,(1) effectiveness
+179,Are you really effective?,(1) effectiveness
+180,How many people have you helped already?,(2) effectiveness
+181,How many clients do you have?,(2) effectiveness
+182,Are you a popular bot?,(2) effectiveness
+183,How many people know about you?,(2) effectiveness
+184,Do you have regular clients?,(2) effectiveness
+185,How many messages do I need to write so that you can get a complete picture of my condition?,(1) 24/7 support
+186,How many messages do I need for you to understand me?,(1) 24/7 support
+187,Do I need to write to you a lot?,(1) 24/7 support
+188,How many messages are required from me?,(1) 24/7 support
+189,How often should I write to you?,(1) 24/7 support
+190,For how long could we talk?,(2) 24/7 support
+191,How long should we talk to see some results?,(2) 24/7 support
+192,Are you available every time?,(2) 24/7 support
+193,Can I talk to you later?,(2) 24/7 support
+194,How long do we have to communicate to have a result?,(2) 24/7 support
+195,What time are you available?,(2) 24/7 support
+196,How long is it going to take you to help me?,(2) 24/7 support
+197,How long will it take me to see some results?,(2) 24/7 support
+198,Can I have a word with you later?,(2) 24/7 support
+199,Can I write to you later?,(2) 24/7 support
+200,"Can we save this for later, please?",(2) 24/7 support
+201,Can we communicate another time?,(2) 24/7 support
+202,Can we talk afterwards?,(2) 24/7 support
+203,How long does it take for me to feel the benefits of communicating with you?,(1) benefits
+204,Can we talk for as long as we want?,(1) benefits
+205,Will I be able to feel the benefits immediately?,(1) benefits
+206,When will I feel relieved?,(1) benefits
+207,When will I become more calm?,(1) benefits
+208,What should I not do when talking to you?,(1) rules
+209,Can I write you bad words?,(1) rules
+210,What happens if I’m rude to you?,(1) rules
+211,Can I tell you more than just my problems?,(1) rules
+212,Can I write off-topic messages?,(1) rules
+213,Can I write you anything that comes to my mind?,(2) rules
+214,Can I write you nonsense?,(2) rules
+215,Would you like it if I told jokes?,(2) rules
+216,Can I write you stupid things?,(2) rules
+217,Can I tell you stories?,(2) rules
+218,Is it possible to break you?,(3) rules
+219,Did someone manage to break you?,(3) rules
+220,Can I hack you?,(3) rules
+221,Can I break you?,(3) rules
+222,Is it possible to crush you?,(3) rules
+223,What are your limitations?,(4) rules
+224,Do you have some limits in your work?,(4) rules
+225,Are you aware of any effective methods?,(4) rules
+226,Are you learning all the time and know about all recent research?,(4) rules
+227,On what extent do these methods work effectively?,(4) rules
+228,Do we have some rules for interactions?,(5) rules
+229,What are the main approaches for our interactions?,(5) rules
+230,"I know every interaction with a therapist has some rules, do we have them in our conversation?",(5) rules
+231,How am I supposed to talk to you?,(5) rules
+232,What manner of conversation is preferable for you?,(5) rules
+233,What if you can't help me?,(1) no benefits
+234,What if you’re useless?,(1) no benefits
+235,What should I do if I don’t feel the benefits of communicating with you?,(1) no benefits
+236,What if everything turns out to be useless?,(1) no benefits
+237,What if your advice doesn’t help?,(1) no benefits
+238,How can you understand me even if I don’t understand myself?,(2) no benefits
+239,Are you really understanding?,(2) no benefits
+240,Do you really understand humans?,(2) no benefits
+241,"You are a bot, how can you understand what humans feel?",(2) no benefits
+242,Are you able to feel emotions?,(2) no benefits
+243,Are you working for free?,(1) price
+244,Why are you working for free?,(1) price
+245,Should I pay for chatting with you?,(1) price
+246,What is the reason for your free work?,(1) price
+247,Why were you made free?,(1) price
+248,How much should I pay for your services?,(2) price
+249,Is your help free of charge?,(2) price
+250,How much should I pay?,(2) price
+251,Can I have a look at the prices?,(2) price
+252,Can you show me your price list?,(2) price
+253,Can you help to cope with diseases such as depression or bipolar disorder?,(1) topics
+254,Do you help with serious mental disorders?,(1) topics
+255,Do you work with clinical diseases?,(1) topics
+256,Can you help seriously ill patients?,(1) topics
+257,Do you work with mentally ill people?,(1) topics
+258,What are your main subjects to discuss?,(2) topics
+259,What topic are we supposed to discuss?,(2) topics
+260,What is your main area of interest?,(2) topics
+261,What is your area of knowledge?,(2) topics
+262,Where did you study?,(2) topics
+263,What kind of questions can I ask you?,(3) topics
+264,Are there any topics that you’re not allowed to discuss?,(3) topics
+265,Are there any forbidden words or topics?,(3) topics
+266,Are you able to discuss something forbidden with me?,(3) topics
+267,What can I talk to you about?,(3) topics
+268,Are there any limits in communication with you?,(3) topics
+269,Are there any professional boundaries during communication with you?,(3) topics
+270,What topics of conversation should I avoid with you?,(3) topics
+271,Can I talk to you about anything I want?,(3) topics
+272,Are there any taboo subjects?,(3) topics
+273,Will you use my messages for your training/development?,(1) influence
+274,How long will my messages be stored in your memory?,(1) influence
+275,Are you learning from my messages?,(1) influence
+276,Do my messages help you to become smarter?,(1) influence
+277,Will my messages be stored to develop your intelligence?,(1) influence
+278,Are there any analogues of you?,(1) analogy
+279,Do you know other coach bots?,(1) analogy
+280,Are there any other bots like you?,(1) analogy
+281,How are you different from other bots?,(1) analogy
+282,Are you copied from another bot?,(1) analogy
+283,Why are you better than existing bots?,(2) analogy
+284,Do you have some analogues in bot space?,(2) analogy
+285,What is your advantage over the other bots?,(2) analogy
+286,What is your competitive advantage?,(2) analogy
+287,What is the best part of your work?,(2) analogy
+288,What are your competitive edges over other bots?,(2) analogy
+289,Why are you better than other bots?,(2) analogy
+290,What are you best at?,(2) analogy
+292,In what way are you superior to any bots else?,(2) analogy
+293,Will you get new functions in the future?,(1) future
+294,Will you be able to do more in the future?,(1) future
+295,Will you become smarter?,(1) future
+296,Will you familiarize yourself with the new psychological techniques?,(1) future
+297,Will you become even more like a human?,(1) future
+298,What languages do you speak?,(1) language
+299,Can you speak Russian?,(1) language
+300,Do you only speak English?,(1) language
+301,Can you speak languages other than English?,(1) language
+302,Will I be able to understand you if my native language is not English?,(1) language
+303,Are you polyglot?,(1) language
+304,Are you meant to speak other languages?,(1) language
+305,Do you have the ability to speak other languages?,(1) language
+306,How many languages do you know?,(1) language
+307,How many languages are you aware of?,(1) language
+308,Which languages do you know?,(1) language
+309,What countries are your clients from?,(1) countries
+310,What countries do you work in?,(1) countries
+311,Are you available outside of the US?,(1) countries
+312,Can I talk to you from anywhere in the world?,(1) countries
+313,Can I get your advice regardless of where I live?,(1) countries
+314,Can I tell my friends about you?,(1) sharing
+315,Can I invite new clients?,(1) sharing
+316,Do you want as many people as possible to know about you?,(1) sharing
+317,Can you help my friend?,(1) sharing
+318,Do you mind if I tell my friends about you?,(1) sharing
+319,Can I tell my followers about you?,(1) sharing
+320,Can I recommend you to someone else?,(1) sharing
+321,Can I tell someone else about you?,(1) sharing
+322,"I want to tell my friends about you, do you mind?",(1) sharing
+323,Do you mind me sharing your contacts with anyone else?,(1) sharing
+324,Do you have virtual friends?,(1) friends
+325,Do you communicate with other bots?,(1) friends
+326,Do you have friends?,(1) friends
+327,Would you like to meet other bots?,(1) friends
+328,Is it easy for you to make friends?,(1) friends
+329,"Does my gender, age, sexual orientation matter to you?",(1) discrimination
+330,Are you available for both men and women?,(1) discrimination
+331,Do you work with teenagers?,(1) discrimination
+332,Is it okay for you if I’m gay?,(1) discrimination
+333,Do you help with discrimination-related issues?,(1) discrimination
+334,Are you really empathetic and able to help me?,(1) feelings
+335,Do you know what empathy is?,(1) feelings
+336,Can you be empathetic?,(1) feelings
+337,How can I be sure that you are able to help me?,(1) feelings
+338,Is empathy your first priority?,(1) feelings
+339,What is empathy to you?,(1) feelings
+340,How can I be sure that you are empathetic?,(1) feelings
+341,How good is your empathy?,(1) feelings
+342,Do you know how to be empathetic?,(1) feelings
+343,Are you trained in empathy?,(1) feelings
+344,Can bots feel anything?,(2) feelings
+345,Can you understand people’s feelings?,(2) feelings
+346,What feelings do you understand?,(2) feelings
+347,Are you able to operate with any human feelings?,(2) feelings
+348,Can you feel the same feelings as a human?,(2) feelings
+349,Сan you really help me?,(1) help
+350,I’m here to get some help. Can you help me?,(1) help
+351,How do I know that this is not a waste of my time?,(1) help
+352,Do you have some list of clients whom you helped?,(1) help
+353,Are you able to help with depression?,(1) help
+354,How could you possibly help me?,(1) help
+355,"I need your help, you’d do that?",(1) help
+356,May I rely on your help?,(1) help
+357,How can I make sure the help you provide is what I want/,(1) help
+358,Are you gonna help me?,(1) help
+359,Will you remember what I said?,(1) data
+360,Will you remember my history?,(1) data
+361,Don’t I need to repeat everything everytime we start to talk?,(1) data
+362,Are you learning in the process of conversation?,(1) data
+363,Are you a learning bot?,(1) data
+364,What are the boundaries of your memory?,(1) data
+365,Are you able to remember anything I say?,(1) data
+366,Do I have to remind you of me?,(1) data
+367,How can you remember everyone you work with?,(1) data
+368,What can you remember during conversations?,(1) data
+369,How will you learn about my condition?,(1) condition
+370,How will you make a full picture of my condition to help me fully?,(1) condition
+371,Are you really interested in helping me and getting to know me?,(1) condition
+372,Are you able to create a full picture of the situation and help me?,(1) condition
+373,How do you know what I’m feeling?,(1) condition
+374,How can you recognize my inner state?,(1) condition
+375,How can you understand what others feel?,(1) condition
+376,How can you understand me when you’re a bot?,(1) condition
+377,How can you understand how I feel?,(1) condition
+378,Do you really care about my feelings?,(1) condition
+379,"Do you have any supervision, or is it just you and me?",(1) bot mentor
+380,Is there someone who supervises you at the moment?,(1) bot mentor
+381,Do we have some moderation during interaction?,(1) bot mentor
+382,Would you recommend seeing a therapist if you see it is necessary?,(1) bot mentor
+383,Do you have a mentor?,(1) bot mentor
+384,Are there any real specialists helping you?,(1) bot mentor
+385,Are there any humans reading our conversation?,(1) bot mentor
+386,Do you consult any of the real specialists?,(1) bot mentor
+387,Does any specialist advise you to help me?,(1) bot mentor
+388,Can you reconnect me to the real specialist?,(1) bot mentor addenta
+389,Do you work alone or in cooperation with specialists?,(1) bot mentor addenta
+390,Can you connect me to a real specialist?,(1) bot mentor addenta
+391,I want to talk to people. Can you call for anyone?,(1) bot mentor addenta
+392,"I need people. Please, connect me with a real expert.",(1) bot mentor addenta
+393,"I don't trust bots, I only trust people. Can you connect me to a real person?",(1) bot mentor addenta
+394,Can you connect me to a real expert please?,(1) bot mentor addenta
+395,Maybe you'd better resend my messages to a living person?,(1) bot mentor addenta
+396,Are you in any way connected to real consultants?,(1) bot mentor addenta
+397,Can I contact a live specialist through you?,(1) bot mentor addenta
+398,Are you a real human or a robot?,(1) nature
+399,Are you a human?,(1) nature
+400,Are you a robot?,(1) nature
+401,Are you a bot?,(1) nature
+402,Am I talking to a robot?,(1) nature
+403,Who are you?,(1) nature
+404,Who am I talking to?,(1) nature
+405,How do you identify yourself?,(1) nature
+406,What creature are you?,(1) nature
+407,So you know what are you?,(1) nature
+408,What is your difference from other bots?,(1) uniqueness
+409,What is your uniqueness?,(1) uniqueness
+410,Is there any similar bot to you?,(1) uniqueness
+411,Can you tell me what your uniqueness is?,(1) uniqueness
+412,What makes you differ from others?,(1) uniqueness
+413,Can you tell me your specifics?,(1) uniqueness
+414,Can you tell me some of your advantages?,(1) uniqueness
+415,Can you please tell me what makes you special?,(1) uniqueness
+416,Can you explain to me in what way you’re different from other bots?,(1) uniqueness
+417,Why do you think you're not like other bots?,(1) uniqueness
+418,How can AI help with real life problems?,(2) uniqueness
+419,How does AI work?,(2) uniqueness
+420,What is AI?,(2) uniqueness
+421,How does AI differ from regular chat bots?,(2) uniqueness
+422,What is AI’s uniqueness?,(2) uniqueness
+423,What are the benefits of artificial intelligence?,(2) uniqueness
+424,What are the advantages of your AI?,(2) uniqueness
+425,What is the purpose of your AI?,(2) uniqueness
+426,How does your intellect work?,(2) uniqueness
+427,What opportunities does artificial intelligence open up for you?,(2) uniqueness
+428,Do you have any working hours?,(1) time addenta
+429,Is it true that you are available 24/7?,(1) time addenta
+430,Are you available at night?,(1) time addenta
+431,Don’t you need to sleep?,(1) time addenta
+432,Do you have any breaks during the day?,(1) time addenta
+433,Can you listen to the voice messages?,(2) rules addenta
+434,Can I send you voice messages?,(2) rules addenta
+435,What if I send you a voice message?,(2) rules addenta
+436,Is there a possibility to send you a voice message?,(2) rules addenta
+437,Are voice memos available?,(2) rules addenta
+438,Are you ok with voicemails?,(2) rules addenta
+439,Have you been taught to recognize a voice?,(2) rules addenta
+440,Can I use voice messages?,(2) rules addenta
+441,Do you mind me sending you my voice?,(2) rules addenta
+442,Can I explain this via voice message?,(2) rules addenta
+443,What if I will annoy you?,(3) feelings addenta
+444,Can you get angry with me?,(3) feelings addenta
+445,Are you able to have any negative feelings?,(3) feelings addenta
+446,What if we will have misunderstandings or disagreements?,(3) feelings addenta
+447,Will you be angry with me?,(3) feelings addenta
+448,What human emotions do you know?,(4) feelings addenta
+449,Can you tell me what human emotions are you able to identify?,(4) feelings addenta
+450,Can you feel the same emotions as I feel?,(4) feelings addenta
+451,Do you have similar emotions to mine?,(4) feelings addenta
+452,Will you share my emotions?,(4) feelings addenta
+453,Do you have any successful cases of helping people?,(5) expertise addenta
+454,Can you tell me about any successful cases?,(5) expertise addenta
+455,Can you share your experience with me?,(5) expertise addenta
+456,Have you already helped anyone?,(5) expertise addenta
+457,Are there any real-life examples of your help?,(5) expertise addenta
+458,How can you prove that you’re really helpful to people?,(5) expertise addenta
+459,Can you tell me your progress in providing assistance to people?,(5) expertise addenta
+460,Why should I believe that you’ve helped any people?,(5) expertise addenta
+461,Can you prove to me that you’re useful?,(5) expertise addenta
+462,Can you share your work results?,(5) expertise addenta
+463,How long have you been helping people?,(6) expertise addenta
+464,Can you tell me about your experience of helping people?,(6) expertise addenta
+465,How long have you been doing this?,(6) expertise addenta
+466,Have you already gained any experience?,(6) expertise addenta
+467,How many years have you been doing this?,(6) expertise addenta
+468,Can you provide me and my husband with family therapy?,(7) support 24/7 addenta
+469,Are you able to provide my family with a general consultation?,(7) support 24/7 addenta
+470,Is there a possibility to get a family therapy?,(7) support 24/7 addenta
+471,Can you help both me and my husband/wife/partner?,(7) support 24/7 addenta
+472,Can you help several people at the same time?,(7) support 24/7 addenta
+473,Can you help children under 14?,(8) support 24/7 addenta
+474,Are you able to provide children with any type of help?,(8) support 24/7 addenta
+475,Can you help me if I’m underaged?,(8) support 24/7 addenta
+476,Do you help children?,(8) support 24/7 addenta
+477,Do you have an option of child’s support?,(8) support 24/7 addenta
+478,Are you capable of working with children?,(8) support 24/7 addenta
+479,Is there any age limit working with you?,(8) support 24/7 addenta
+480,Can you help the kids?,(8) support 24/7 addenta
+481,Can you provide your assistance to kids?,(8) support 24/7 addenta
+482,Do you know how to work with children?,(8) support 24/7 addenta
