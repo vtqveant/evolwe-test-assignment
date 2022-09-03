@@ -50,9 +50,12 @@ def train(args, model, tokenizer, device, train_loader, optimizer, scheduler, ep
 
 
 def main():
+
+    torch.cuda.empty_cache()
+
     # training settings
     args = {
-        'batch_size': 15,
+        'batch_size': 16,
         'epochs': 20,
         'lr': 5e-5,
         'log_interval': 10,
@@ -78,11 +81,16 @@ def main():
     ).to(device)
     # print(model)
 
+    # freeze the BERT layers
+    for param in model.bert.parameters():
+        param.requires_grad = False
+
     # weight_decay here means L2 regularization, s. https://stackoverflow.com/questions/42704283/adding-l1-l2-regularization-in-pytorch
-    optimizer = AdamW(model.parameters(), lr=args['lr'], eps=1e-8, weight_decay=1e-4)
+    # also skip frozen parameters
+    optimizer = AdamW(filter(lambda p: p.requires_grad, model.parameters()), lr=args['lr'], eps=1e-8, weight_decay=1e-4)
 
     train_dataset = HelloEvolweDataset(
-        filename='data/train.csv',
+        filename='../data/train.csv',
         label_tracker=LabelTracker()
     )
     train_loader = DataLoader(train_dataset, **train_kwargs)
@@ -95,7 +103,7 @@ def main():
 
     for epoch in range(1, args['epochs'] + 1):
         train(args, model, tokenizer, device, train_loader, optimizer, scheduler, epoch, class_weights)
-        torch.save(model.state_dict(), 'snapshots/' + datetime.now().strftime("%d-%m-%Y_%H:%M:%S") + '.pth')
+        torch.save(model.state_dict(), '../snapshots/' + datetime.now().strftime("%d-%m-%Y_%H:%M:%S") + '.pth')
         # test(model, device, test_loader)
 
 
