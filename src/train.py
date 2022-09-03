@@ -35,49 +35,32 @@ def train(args, model, tokenizer, device, train_loader, optimizer, epoch):
         loss.backward()
         optimizer.step()
 
-        if batch_idx % args.log_interval == 0:
+        if batch_idx % args['log_interval'] == 0:
             print('Train Epoch: {} [{}/{} ({:.0f}%)]\tLoss: {:.12f}'.format(
                 epoch, batch_idx * len(texts), len(train_loader.dataset),
                        100. * batch_idx / len(train_loader), loss.item()))
-            if args.dry_run:
+            if args['dry_run']:
                 break
-
-        if batch_idx > 0 and batch_idx % args.snapshot_interval == 0:
-            if args.dry_run:
-                break
-            print('Saving snapshot for epoch {}\n'.format(epoch))
-            torch.save(model.state_dict(), '../snapshots/' + datetime.now().strftime("%d-%m-%Y_%H:%M:%S") + '.pth')
 
 
 def main():
-    # Training settings
-    parser = argparse.ArgumentParser(description='Evolwe Test Assignment :: Intent Classification (BERT)')
-    parser.add_argument('--batch-size', type=int, default=20, metavar='N',
-                        help='input batch size for training (default: 20)')
-    parser.add_argument('--test-batch-size', type=int, default=20, metavar='N',
-                        help='input batch size for testing (default: 20)')
-    parser.add_argument('--epochs', type=int, default=3, metavar='N',
-                        help='number of epochs to train (default: 3)')
-    parser.add_argument('--lr', type=float, default=0.0001, metavar='LR',
-                        help='learning rate (default: 0.0001)')
-    parser.add_argument('--log-interval', type=int, default=10, metavar='N',
-                        help='how many batches to wait before logging training status')
-    parser.add_argument('--no-cuda', action='store_true', default=False,
-                        help='disables CUDA training')
-    args = parser.parse_args()
+    # training settings
+    args = {
+        'batch_size': 10,
+        'epochs': 20,
+        'lr': 0.0001,
+        'log_interval': 10,
+        'dry_run': False,
+        'snapshot_interval': 50
+    }
 
-    use_cuda = not args.no_cuda and torch.cuda.is_available()
+    use_cuda = torch.cuda.is_available()
     device = torch.device("cuda" if use_cuda else "cpu")
     print(f"INFO: Using {device} device")
 
-    train_kwargs = {'batch_size': args.batch_size}
-    test_kwargs = {'batch_size': args.test_batch_size}
+    train_kwargs = {'batch_size': args['batch_size'], 'shuffle': True}
     if use_cuda:
-        cuda_kwargs = {'num_workers': 0,
-                       'pin_memory': True,
-                       'shuffle': False}
-        train_kwargs.update(cuda_kwargs)
-        test_kwargs.update(cuda_kwargs)
+        train_kwargs.update({'num_workers': 0, 'pin_memory': True})
 
     tokenizer = BertTokenizer.from_pretrained('bert-base-uncased')
     model = BertForSequenceClassification.from_pretrained(
@@ -86,21 +69,23 @@ def main():
         output_attentions=False,
         output_hidden_states=False
     ).to(device)
-    print(model)
+    # print(model)
 
     # weight_decay here means L2 regularization, s. https://stackoverflow.com/questions/42704283/adding-l1-l2-regularization-in-pytorch
-    optimizer = Adam(model.parameters(), lr=args.lr, weight_decay=1e-5)
+    optimizer = Adam(model.parameters(), lr=args['lr'], weight_decay=1e-5)
 
     train_dataset = HelloEvolweDataset(
-        filename='../data/hello_nova_intents_0.2.2.yaml',
-        label_tracker=DictLabelTracker(),
-        shuffle=True
+        filename='data/hello_nova_intents_0.2.2.yaml',
+        label_tracker=DictLabelTracker()
     )
     train_loader = DataLoader(train_dataset, **train_kwargs)
 
-    for epoch in range(1, args.epochs + 1):
+    # start where we ended last time
+    # model.load_state_dict(torch.load('/content/snapshots/02-09-2022_19:01:31.pth'))
+
+    for epoch in range(1, args['epochs'] + 1):
         train(args, model, tokenizer, device, train_loader, optimizer, epoch)
-        torch.save(model.state_dict(), '../snapshots/' + datetime.now().strftime("%d-%m-%Y_%H:%M:%S") + '.pth')
+        torch.save(model.state_dict(), 'snapshots/' + datetime.now().strftime("%d-%m-%Y_%H:%M:%S") + '.pth')
         # test(model, device, test_loader)
 
 

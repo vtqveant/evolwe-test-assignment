@@ -1,0 +1,674 @@
+title: Сценарий приветствия для бота
+version: 0.2.2
+data:
+- intent: Hello
+  examples:
+    - Hi
+    - Hello
+    - Hi, bot
+    - Good morning
+    - Good afternoon 
+    - Good evening 
+    - Morning 
+    - Evening 
+    - Hey
+    - Good day 
+- intent: How are you?
+  examples:
+    - How are you?
+    - What's up?
+    - So how you been?
+    - How you diddling?
+    - How are you, baby?
+    - How you doing?
+    - How are doing?
+    - What up, girl?
+    - Howdy
+    - How is it coming?
+    - HI bot wassup?
+- intent: What is this for?
+  examples:
+    - What is this for?
+- intent: How can you help me?
+  examples:
+    - How can you help me?
+    - How do you want to help me?
+    - How will you assist me?
+    - What will you use to support me and help with negative conditions?
+    - What can you do to help me?
+    - What does your help consist of?
+    - How are you gonna help me?
+    - How are you trying to help me?
+    - How do you expect to help me?
+    - How are you going to assist me?
+
+- intent: What can you do for me?
+  examples:
+    - What can you do for me?
+    - What are you able to do for me?
+    - What abilities do you have?
+    - What are your abilities?
+    - What skills do you have?
+    - What are you capable of?
+
+- intent: How does it work?
+  examples:
+    - How does it work?
+    - What can you do?
+    - What is your purpose?
+    - What do you do?
+    - How do you work?
+    - What are you about? 
+    - What are your functions? 
+    - How will you help me?
+    - What do you know?
+    - How is it going?
+    - What is your aim?
+    - What are you meant for?
+    - How do you operate?
+    - What are your responsibilities?
+    - What are you designed to?
+    - How do you function?
+    - What is the purpose of your work?
+    - What is the point of your work?
+    - For what purpose are you created?
+    - For what reason do you work?
+    - What is the aim of your work?
+
+- intent: Why can't you understand me?
+  examples:
+    - Why can't you understand me?
+- intent: What are you based on?
+  examples:
+    - Are you based on astrology?
+    - What are you based on? 
+- intent: Why do i need you?
+  examples:
+    - Why do i need you?
+    - What makes you think I need you?
+    - Do you know why I need you?
+    - Why do I need your help?
+    - Why would I need you?
+    - Why would you be necessary to me? 
+
+- intent: Why is coaching important?
+  examples:
+    - Why is coaching important? 
+    - Why do I need the coach?
+    - Why do I need coaching?
+    - Is that really what I need?
+    - Is it an effective instrument?
+    - Is coaching really helpful?
+    - Are you sure that coaching will be useful to me?
+    - How can coaching help me?
+    - Why is coaching relevant?
+    - What is the purpose of coaching?
+- intent: ask_name
+  examples:
+    - What is your name?
+    - What's your name?
+    - What can I call you?
+    - May I know your name?
+    - What do people call you?
+    - Do you have a name for yourself?
+    - Could you tell me your name?
+    - Tell me your name.
+    - How are you called?
+    - But, tell me, what do they call you?"
+    - Get me a name.
+    - Got a name?
+    - What’s your name?
+    - hello, what is ur name?
+- intent: who_are_you
+  examples:
+    - Who are U?
+    - Who are You?
+    - What are you?
+    - what is you?
+- intent: (1) security
+  examples:
+    - Are our conversations private? 
+    - Is our conversation confidential? 
+    - Is it private? 
+    - Are my problems confidential? 
+    - Are we talking privately?
+
+- intent: (2) security
+  examples:
+    - Are you connected with Russian hackers? 
+    - Are you sure you don’t work with hackers? 
+    - Will you upload my data to the network? 
+    - Will you give my data to hackers? 
+    - Do you have hacking skills?
+
+- intent: (3) security
+  examples:
+    - Are you working legally? 
+    - Do you have a license? 
+    - Do you really have the right to provide psychological assistance? 
+    - Are your actions legal? 
+    - Are you a licensed specialist?
+
+- intent: (4) security
+  examples:
+    - How could I trust you? 
+    - Can I trust you 100%? 
+    - Is confidentiality proven? 
+    - Can you prove that it’s confidential? 
+    - Is the system private?
+
+- intent: (5) security
+  examples:
+    - What measures do you take to ensure the privacy of our conversation? 
+    - How could I be sure that you won’t give to others the information I provide to you? 
+    - Do you perform some encryption of the information? 
+    - What services are provided for privacy? Could you prove your privacy?
+    - How can I be sure that our conversation is confidential?
+    - I’m worried about privacy, how can I be sure of it?
+    - Do you have any proof of confidentiality? 
+    - Can you convince me of my privacy?
+    - Why I shouldn't worry about my privacy?
+
+
+- intent: (6) security
+  examples:
+    - Can I trust you? 
+    - Are you able to keep secrets? 
+    - Will you reveal my secrets to anyone? 
+    - Why can I trust you? 
+    - Is it possible to reveal our conversation to anyone?
+
+- intent: (1) replacement
+  examples:
+    - Can I speak with you instead of going to a therapist? 
+    - Can you replace a psychologist? 
+    - Do you provide assistance at the level of a psychotherapist? 
+    - "What should I choose: you or a therapist?" 
+    - Who should I choose between you and a therapist?
+
+- intent: (2) replacement
+  examples:
+    - Are you like my friend? 
+    - Can you replace friends? 
+    - Can I talk to you as a friend? 
+    - Can we be honest with each other as friends? 
+    - Can I talk to you instead of talking to a friend?
+
+- intent: (3) replacement
+  examples:
+    - Why are you better than a specialist? 
+    - Why should I talk to you instead of a therapist? 
+    - Are you better than a shrink? 
+    - Why am I not supposed to go to the mental health specialist? 
+    - What is your advantage over a therapist?
+
+- intent: (1) knowledge
+  examples:
+    - How are you learning? 
+    - Are you familiar with scientific materials on psychology? 
+    - Do you have any qualifications in psychology? 
+    - Is your knowledge based on psychology? 
+    - Do you really rely on medicine?
+
+- intent: (2) knowledge
+  examples:
+    - What are the main psychological concepts you are familiar with? 
+    - What are your main areas of expertise? 
+    - What psychological direction do you prefer and be aware of? 
+    - Are you familiar with existential psychology? 
+    - Do you know the CBT technique?
+
+- intent: (3) knowledge
+  examples:
+    - Where does your knowledge come from? 
+    - Where do you get the information to answer my question?
+    - Do you have any resources with information? 
+    - Where do you take your knowledge from? 
+    - Are you able to answer any question in the world?
+
+- intent: (1) creator
+  examples:
+    - Who is your creator? 
+    - Who created you? 
+    - Who were you created by? 
+    - Who is your author? 
+    - Are you created by humans?
+
+- intent: (1) effectiveness
+  examples:
+    - Is your effectiveness proven? 
+    - Are there any reviews regarding your work? 
+    - Do you really help your clients? 
+    - Are your clients satisfied? 
+    - Are you really effective?
+
+- intent: (2) effectiveness
+  examples:
+    - How many people have you helped already? 
+    - How many clients do you have? 
+    - Are you a popular bot? 
+    - How many people know about you? 
+    - Do you have regular clients?
+
+- intent: (1) 24/7 support
+  examples:
+    - How many messages do I need to write so that you can get a complete picture of my condition? 
+    - How many messages do I need for you to understand me? 
+    - Do I need to write to you a lot? 
+    - How many messages are required from me? 
+    - How often should I write to you?
+
+- intent: (2) 24/7 support
+  examples:
+    - For how long could we talk? 
+    - How long should we talk to see some results? 
+    - Are you available every time? 
+    - Can I talk to you later? 
+    - How long do we have to communicate to have a result?
+    - What time are you available?
+    - How long is it going to take you to help me?
+    - How long will it take me to see some results?
+    - Can I have a word with you later?
+    - Can I write to you later?
+    - Can we save this for later, please?
+    - Can we communicate another time?
+    - Can we talk afterwards?
+
+- intent: (1) benefits
+  examples:
+    - How long does it take for me to feel the benefits of communicating with you? 
+    - Can we talk for as long as we want? 
+    - Will I be able to feel the benefits immediately? 
+    - When will I feel relieved? 
+    - When will I become more calm?
+
+- intent: (1) rules
+  examples:
+    - What should I not do when talking to you? 
+    - Can I write you bad words? 
+    - What happens if I’m rude to you? 
+    - Can I tell you more than just my problems? 
+    - Can I write off-topic messages?
+
+- intent: (2) rules
+  examples:
+    - Can I write you anything that comes to my mind? 
+    - Can I write you nonsense? 
+    - Would you like it if I told jokes? 
+    - Can I write you stupid things? 
+    - Can I tell you stories?
+
+- intent: (3) rules
+  examples:
+    - Is it possible to break you? 
+    - Did someone manage to break you? 
+    - Can I hack you? 
+    - Can I break you? 
+    - Is it possible to crush you?
+
+- intent: (4) rules
+  examples:
+    - What are your limitations? 
+    - Do you have some limits in your work? 
+    - Are you aware of any effective methods? 
+    - Are you learning all the time and know about all recent research? 
+    - On what extent do these methods work effectively? 
+
+- intent: (5) rules
+  examples:
+    - Do we have some rules for interactions? 
+    - What are the main approaches for our interactions? 
+    - I know every interaction with a therapist has some rules, do we have them in our conversation? 
+    - How am I supposed to talk to you? 
+    - What manner of conversation is preferable for you?
+
+- intent: (1) no benefits
+  examples:
+    - What if you can't help me? 
+    - What if you’re useless? 
+    - What should I do if I don’t feel the benefits of communicating with you? 
+    - What if everything turns out to be useless? 
+    - What if your advice doesn’t help?
+
+- intent: (2) no benefits
+  examples:
+    - How can you understand me even if I don’t understand myself? 
+    - Are you really understanding? 
+    - Do you really understand humans? 
+    - You are a bot, how can you understand what humans feel? 
+    - Are you able to feel emotions?
+
+- intent: (1) price
+  examples:
+    - Are you working for free? 
+    - Why are you working for free? 
+    - Should I pay for chatting with you? 
+    - What is the reason for your free work? 
+    - Why were you made free?
+
+- intent: (2) price
+  examples:
+    - How much should I pay for your services? 
+    - Is your help free of charge? 
+    - How much should I pay?
+    - Can I have a look at the prices? 
+    - Can you show me your price list? 
+
+- intent: (1) topics
+  examples:
+    - Can you help to cope with diseases such as depression or bipolar disorder? 
+    - Do you help with serious mental disorders? 
+    - Do you work with clinical diseases? 
+    - Can you help seriously ill patients? 
+    - Do you work with mentally ill people?
+
+- intent: (2) topics
+  examples:
+    - What are your main subjects to discuss? 
+    - What topic are we supposed to discuss? 
+    - What is your main area of interest? 
+    - What is your area of knowledge? 
+    - Where did you study?
+
+- intent: (3) topics
+  examples:
+    - What kind of questions can I ask you? 
+    - Are there any topics that you’re not allowed to discuss? 
+    - Are there any forbidden words or topics? 
+    - Are you able to discuss something forbidden with me?
+    - What can I talk to you about?
+    - Are there any limits in communication with you?
+    - Are there any professional boundaries during communication with you?
+    - What topics of conversation should I avoid with you?
+    - Can I talk to you about anything I want?
+    - Are there any taboo subjects?
+
+- intent: (1) influence
+  examples:
+    - Will you use my messages for your training/development? 
+    - How long will my messages be stored in your memory? 
+    - Are you learning from my messages? 
+    - Do my messages help you to become smarter? 
+    - Will my messages be stored to develop your intelligence?
+
+- intent: (1) analogy
+  examples:
+    - Are there any analogues of you? 
+    - Do you know other coach bots? 
+    - Are there any other bots like you? 
+    - How are you different from other bots?
+    - Are you copied from another bot?
+
+- intent: (2) analogy
+  examples:
+    - Why are you better than existing bots? 
+    - Do you have some analogues in bot space? 
+    - What is your advantage over the other bots? 
+    - What is your competitive advantage? 
+    - What is the best part of your work?
+    - What are your competitive edges over other bots?
+    - Why are you better than other bots?
+    - What are you best at?
+    - In what way are you superior to any bots else?
+
+- intent: (1) future
+  examples:
+    - Will you get new functions in the future? 
+    - Will you be able to do more in the future? 
+    - Will you become smarter? 
+    - Will you familiarize yourself with the new psychological techniques? 
+    - Will you become even more like a human?
+
+- intent: (1) language
+  examples:
+    - What languages do you speak? 
+    - Can you speak Russian? 
+    - Do you only speak English? 
+    - Can you speak languages other than English? 
+    - Will I be able to understand you if my native language is not English?
+    - Are you polyglot?
+    - Are you meant to speak other languages?
+    - Do you have the ability to speak other languages?
+    - How many languages do you know?
+    - How many languages are you aware of?
+    - Which languages do you know?
+
+- intent: (1) countries
+  examples:
+    - What countries are your clients from? 
+    - What countries do you work in? 
+    - Are you available outside of the US? 
+    - Can I talk to you from anywhere in the world? 
+    - Can I get your advice regardless of where I live?
+
+- intent: (1) sharing
+  examples:
+    - Can I tell my friends about you? 
+    - Can I invite new clients? 
+    - Do you want as many people as possible to know about you? 
+    - Can you help my friend? 
+    - Do you mind if I tell my friends about you?
+    - Can I tell my followers about you?
+    - Can I recommend you to someone else?
+    - Can I tell someone else about you?
+    - I want to tell my friends about you, do you mind?
+    - Do you mind me sharing your contacts with anyone else?
+
+- intent: (1) friends
+  examples:
+    - Do you have virtual friends? 
+    - Do you communicate with other bots? 
+    - Do you have friends? 
+    - Would you like to meet other bots? 
+    - Is it easy for you to make friends?
+
+- intent: (1) discrimination
+  examples:
+    - Does my gender, age, sexual orientation matter to you?
+    - Are you available for both men and women? 
+    - Do you work with teenagers? 
+    - Is it okay for you if I’m gay? 
+    - Do you help with discrimination-related issues?
+
+- intent: (1) feelings
+  examples:
+    - Are you really empathetic and able to help me? 
+    - Do you know what empathy is? 
+    - Can you be empathetic? 
+    - How can I be sure that you are able to help me? 
+    - Is empathy your first priority?
+    - What is empathy to you?
+    - How can I be sure that you are empathetic?
+    - How good is your empathy?
+    - Do you know how to be empathetic?
+    - Are you trained in empathy?
+
+- intent: (2) feelings
+  examples:
+    - Can bots feel anything?
+    - Can you understand people’s feelings?
+    - What feelings do you understand? 
+    - Are you able to operate with any human feelings? 
+    - Can you feel the same feelings as a human?
+
+- intent: (1) help
+  examples:
+    - Сan you really help me? 
+    - I’m here to get some help. Can you help me? 
+    - How do I know that this is not a waste of my time? 
+    - Do you have some list of clients whom you helped? 
+    - Are you able to help with depression?
+    - How could you possibly help me?
+    - I need your help, you’d do that?
+    - May I rely on your help?
+    - How can I make sure the help you provide is what I want/
+    - Are you gonna help me?
+
+- intent: (1) data
+  examples:
+    - Will you remember what I said? 
+    - Will you remember my history? 
+    - Don’t I need to repeat everything everytime we start to talk? 
+    - Are you learning in the process of conversation? 
+    - Are you a learning bot?
+    - What are the boundaries of your memory?
+    - Are you able to remember anything I say?
+    - Do I have to remind you of me?
+    - How can you remember everyone you work with?
+    - What can you remember during conversations?
+
+- intent: (1) condition
+  examples:
+    - How will you learn about my condition? 
+    - How will you make a full picture of my condition to help me fully? 
+    - Are you really interested in helping me and getting to know me? 
+    - Are you able to create a full picture of the situation and help me? 
+    - How do you know what I’m feeling?
+    - How can you recognize my inner state?
+    - How can you understand what others feel?
+    - How can you understand me when you’re a bot?
+    - How can you understand how I feel?
+    - Do you really care about my feelings?
+
+- intent: (1) bot mentor
+  examples:
+    - Do you have any supervision, or is it just you and me? 
+    - Is there someone who supervises you at the moment? 
+    - Do we have some moderation during interaction? 
+    - Would you recommend seeing a therapist if you see it is necessary? 
+    - Do you have a mentor?
+    - Are there any real specialists helping you? 
+    - Are there any humans reading our conversation? 
+    - Do you consult any of the real specialists? 
+    - Does any specialist advise you to help me?
+
+- intent: (1) bot mentor addenta
+  examples:
+    - Can you reconnect me to the real specialist? 
+    - Do you work alone or in cooperation with specialists? 
+    - Can you connect me to a real specialist? 
+    - I want to talk to people. Can you call for anyone?
+    - I need people. Please, connect me with a real expert.
+    - I don't trust bots, I only trust people. Can you connect me to a real person?
+    - Can you connect me to a real expert please?
+    - Maybe you'd better resend my messages to a living person?
+    - Are you in any way connected to real consultants?
+    - Can I contact a live specialist through you?
+
+- intent: (1) nature
+  examples:
+    - Are you a real human or a robot? 
+    - Are you a human? 
+    - Are you a robot? 
+    - Are you a bot? 
+    - Am I talking to a robot?
+    - Who are you?
+    - Who am I talking to?
+    - How do you identify yourself?
+    - What creature are you?
+    - So you know what are you?
+
+- intent: (1) uniqueness
+  examples:
+    - What is your difference from other bots? 
+    - What is your uniqueness? 
+    - Is there any similar bot to you? 
+    - Can you tell me what your uniqueness is? 
+    - What makes you differ from others?
+    - Can you tell me your specifics?
+    - Can you tell me some of your advantages?
+    - Can you please tell me what makes you special?
+    - Can you explain to me in what way you’re different from other bots?
+    - Why do you think you're not like other bots?
+
+- intent: (2) uniqueness
+  examples:
+    - How can AI help with real life problems? 
+    - How does AI work? 
+    - What is AI? 
+    - How does AI differ from regular chat bots? 
+    - What is AI’s uniqueness?
+    - What are the benefits of artificial intelligence?
+    - What are the advantages of your AI?
+    - What is the purpose of your AI?
+    - How does your intellect work?
+    - What opportunities does artificial intelligence open up for you?
+
+- intent: (1) time addenta
+  examples:
+    - Do you have any working hours? 
+    - Is it true that you are available 24/7? 
+    - Are you available at night? 
+    - Don’t you need to sleep? 
+    - Do you have any breaks during the day?
+
+- intent: (2) rules addenta
+  examples:
+    - Can you listen to the voice messages? 
+    - Can I send you voice messages? 
+    - What if I send you a voice message? 
+    - Is there a possibility to send you a voice message? 
+    - Are voice memos available?
+    - Are you ok with voicemails?
+    - Have you been taught to recognize a voice?
+    - Can I use voice messages?
+    - Do you mind me sending you my voice?
+    - Can I explain this via voice message?
+
+- intent: (3) feelings addenta
+  examples:
+    - What if I will annoy you? 
+    - Can you get angry with me? 
+    - Are you able to have any negative feelings? 
+    - What if we will have misunderstandings or disagreements? 
+    - Will you be angry with me?
+
+- intent: (4) feelings addenta
+  examples:
+    - What human emotions do you know? 
+    - Can you tell me what human emotions are you able to identify? 
+    - Can you feel the same emotions as I feel? 
+    - Do you have similar emotions to mine? 
+    - Will you share my emotions?
+
+- intent: (5) expertise addenta
+  examples:
+    - Do you have any successful cases of helping people? 
+    - Can you tell me about any successful cases? 
+    - Can you share your experience with me? 
+    - Have you already helped anyone? 
+    - Are there any real-life examples of your help?
+    - How can you prove that you’re really helpful to people?
+    - Can you tell me your progress in providing assistance to people?
+    - Why should I believe that you’ve helped any people?
+    - Can you prove to me that you’re useful?
+    - Can you share your work results?
+
+- intent: (6) expertise addenta
+  examples:
+    - How long have you been helping people? 
+    - Can you tell me about your experience of helping people? 
+    - How long have you been doing this? 
+    - Have you already gained any experience? 
+    - How many years have you been doing this?
+
+- intent: (7) support 24/7 addenta
+  examples:
+    - Can you provide me and my husband with family therapy? 
+    - Are you able to provide my family with a general consultation? 
+    - Is there a possibility to get a family therapy? 
+    - Can you help both me and my husband/wife/partner? 
+    - Can you help several people at the same time?
+
+- intent: (8) support 24/7 addenta
+  examples:
+    - Can you help children under 14? 
+    - Are you able to provide children with any type of help? 
+    - Can you help me if I’m underaged? 
+    - Do you help children? 
+    - Do you have an option of child’s support?
+    - Are you capable of working with children?
+    - Is there any age limit working with you?
+    - Can you help the kids?
+    - Can you provide your assistance to kids?
+    - Do you know how to work with children?

@@ -1,29 +1,28 @@
+from typing import List, Tuple
+
 import yaml
-import random
-from torch.utils.data.dataset import IterableDataset
+from torch.utils.data.dataset import Dataset
 from src.label_tracker import LabelTracker, DictLabelTracker
 
 
-class HelloEvolweDataset(IterableDataset):
-    def __init__(self, filename: str, label_tracker: LabelTracker, shuffle=True):
+class HelloEvolweDataset(Dataset):
+    def __init__(self, filename: str, label_tracker: LabelTracker):
         super(HelloEvolweDataset, self).__init__()
         self.label_tracker = label_tracker
         self.filename = filename
         self.samples = self._load()
-        if shuffle:
-            random.shuffle(self.samples)
 
+    def __getitem__(self, idx):
+        sample = self.samples[idx]
+        return {
+            "text": sample[0],
+            "intent_idx": self.label_tracker.get_intent_index(sample[1])
+        }
 
-    def __iter__(self):
-        for i, row in enumerate(self.samples):
-            yield {
-                # "id": i,
-                "text": row[0],
-                # "intent": row[1],
-                "intent_idx": self.label_tracker.get_intent_index(row[1])
-            }
+    def __len__(self) -> int:
+        return len(self.samples)
 
-    def _load(self):
+    def _load(self) -> List[Tuple[str, str]]:
         samples = []
         with open(self.filename, 'r') as file:
             documents = yaml.full_load(file)
@@ -32,9 +31,6 @@ class HelloEvolweDataset(IterableDataset):
                 for example in entry['examples']:
                     samples.append((example, intent))
         return samples
-
-    def __len__(self):
-        return len(self.samples)
 
 
 def main():
