@@ -51,13 +51,13 @@ def train(args, model, tokenizer, device, train_loader, optimizer, scheduler, ep
 
 def main():
 
-    torch.cuda.empty_cache()
+    # torch.cuda.empty_cache()
 
     # training settings
     args = {
-        'batch_size': 16,
+        'batch_size': 10,
         'epochs': 20,
-        'lr': 5e-5,
+        'lr': 1e-5,
         'log_interval': 10,
         'dry_run': False,
         'snapshot_interval': 100
@@ -79,11 +79,18 @@ def main():
         output_attentions=False,
         output_hidden_states=False
     ).to(device)
-    # print(model)
+    print(model)
 
-    # freeze the BERT layers
-    for param in model.bert.parameters():
-        param.requires_grad = False
+    # freeze (some) BERT layers
+    for name, param in model.named_parameters():
+        if name.startswith("bert.embeddings"):
+            param.requires_grad = False
+        if name.startswith("bert.encoder.layer") and not \
+                (name.startswith("bert.encoder.layer.8") or
+                 name.startswith("bert.encoder.layer.9") or
+                 name.startswith("bert.encoder.layer.10") or
+                 name.startswith("bert.encoder.layer.11")):
+            param.requires_grad = False
 
     # weight_decay here means L2 regularization, s. https://stackoverflow.com/questions/42704283/adding-l1-l2-regularization-in-pytorch
     # also skip frozen parameters
