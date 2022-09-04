@@ -1,7 +1,10 @@
 from typing import List, Tuple
 
 import csv
+import numpy as np
+import torch.utils.data
 from torch.utils.data.dataset import Dataset
+from torch.utils.data import SubsetRandomSampler
 from src.label_tracker import LabelTracker
 
 
@@ -22,15 +25,6 @@ class HelloEvolweDataset(Dataset):
     def __len__(self) -> int:
         return len(self.samples)
 
-    def get_class_weights(self):
-        n_classes = self.label_tracker.get_num_labels()
-        n_samples = [0 for _ in range(n_classes)]
-        for sample in self.samples:
-            i = self.label_tracker.get_intent_index(sample[1])
-            n_samples[i] += 1
-        weights = [count / n_classes for count in n_samples]
-        return weights
-
     def _load(self) -> List[Tuple[str, str, int]]:
         samples = []
         with open(self.filename, 'r') as f:
@@ -45,19 +39,37 @@ class HelloEvolweDataset(Dataset):
 
 
 def main():
-    dataset = HelloEvolweDataset(filename='../data/train.csv', label_tracker=LabelTracker())
+    dataset = HelloEvolweDataset(filename='../data/dataset.csv', label_tracker=LabelTracker())
     for i, entry in enumerate(dataset):
         if i == 100:
             break
         print(entry)
 
-    class_weights = dataset.get_class_weights()
-    print(class_weights)
+    random_seed = 42
+    test_split_portion = 0.1
 
-    sum = 0
-    for x in class_weights:
-        sum += x
-    print(sum)
+    n_samples = len(dataset)
+    indices = list(range(n_samples))
+    split_idx = int(np.floor(test_split_portion * n_samples))
+
+    # shuffle
+    np.random.seed(random_seed)
+    np.random.shuffle(indices)
+
+    train_indices, test_indices = indices[split_idx:], indices[:split_idx]
+
+    # samplers
+    train_sampler = SubsetRandomSampler(train_indices)
+    test_sampler = SubsetRandomSampler(test_indices)
+
+    train_loader = torch.utils.data.DataLoader(dataset, batch_size=10, sampler=train_sampler)
+    test_loader = torch.utils.data.DataLoader(dataset, batch_size=10, sampler=test_sampler)
+
+    for sample in train_loader:
+        print(sample)
+
+    print(len(train_loader))
+    print(len(test_loader))
 
 
 if __name__ == '__main__':

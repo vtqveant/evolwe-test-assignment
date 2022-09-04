@@ -1,7 +1,9 @@
+import numpy as np
 import torch
 from torch.utils.data import DataLoader
+from torch.utils.data import SubsetRandomSampler
 from torch.optim import AdamW
-from transformers import BertTokenizer, BertForSequenceClassification, get_linear_schedule_with_warmup
+from transformers import BertTokenizer, BertForSequenceClassification
 from datetime import datetime
 
 from dataset import HelloEvolweDataset
@@ -11,16 +13,15 @@ from src.label_tracker import LabelTracker
 NUM_LABELS = 67
 
 
-def train(args, model, tokenizer, device, train_loader, optimizer, scheduler, epoch, class_weights):
+def train(args, model, tokenizer, device, train_loader, optimizer, epoch):
     model.train()
-    class_weights = torch.tensor(class_weights).to(device)
 
-    for batch_idx, sample in enumerate(train_loader):
+    for batch_idx, batch in enumerate(train_loader):
         optimizer.zero_grad()
 
-        labels = sample['intent_idx'].to(device)
+        labels = batch['intent_idx'].to(device)
 
-        texts = sample['text']
+        texts = batch['text']
         encoded_input = tokenizer.batch_encode_plus(
             batch_text_or_text_pairs=texts,
             add_special_tokens=True,
@@ -33,20 +34,57 @@ def train(args, model, tokenizer, device, train_loader, optimizer, scheduler, ep
         outputs = model(**encoded_input)
         logits = outputs['logits']
 
-        criterion = torch.nn.CrossEntropyLoss(weight=class_weights)
+        criterion = torch.nn.CrossEntropyLoss()
         loss = criterion(logits, labels)
 
         loss.backward()
-
         optimizer.step()
-        scheduler.step()
 
         if batch_idx % args['log_interval'] == 0:
             print('Train Epoch: {} [{}/{} ({:.0f}%)]\tLoss: {:.12f}'.format(
                 epoch, batch_idx * len(texts), len(train_loader.dataset),
-                       100. * batch_idx / len(train_loader), loss.item()))
-            if args['dry_run']:
-                break
+                100. * batch_idx / len(train_loader), loss.item()))
+
+
+def evaluate(args, model, tokenizer, device, test_loader):
+    model.eval()
+
+    validation_accuracy = []
+    validation_loss = []
+
+    for batch in test_loader:
+        labels = batch['intent_idx'].to(device)
+
+        texts = batch['text']
+        encoded_input = tokenizer.batch_encode_plus(
+            batch_text_or_text_pairs=texts,
+            add_special_tokens=True,
+            padding='max_length',
+            max_length=512,
+            return_attention_mask=True,
+            return_tensors='pt'
+        ).to(device)
+
+        with torch.no_grad:
+            outputs = model(**encoded_input)
+            logits = outputs['logits']
+
+        criterion = torch.nn.CrossEntropyLoss()
+        loss = criterion(logits, labels)
+        validation_loss.append(loss.item())
+
+        # Get the predictions
+        predictions = torch.argmax(logits, dim=1).flatten()
+
+        # Calculate the accuracy rate
+        # accuracy = (predictions == labels).cpu().numpy().mean() * 100
+        # validation_accuracy.append(accuracy)
+
+    # Compute the average accuracy and loss over the validation set
+    validation_loss = np.mean(validation_loss)
+    validation_accuracy = np.mean(validation_accuracy)
+
+    return validation_loss, validation_accuracy
 
 
 def main():
@@ -59,7 +97,6 @@ def main():
         'epochs': 20,
         'lr': 1e-5,
         'log_interval': 10,
-        'dry_run': False,
         'snapshot_interval': 100
     }
 
@@ -81,7 +118,7 @@ def main():
     ).to(device)
     print(model)
 
-    # freeze (some) BERT layers
+    # freeze (some) BERT layers to avoid GPU Out-of-Memory error
     for name, param in model.named_parameters():
         if name.startswith("bert.embeddings"):
             param.requires_grad = False
@@ -96,22 +133,38 @@ def main():
     # also skip frozen parameters
     optimizer = AdamW(filter(lambda p: p.requires_grad, model.parameters()), lr=args['lr'], eps=1e-8, weight_decay=1e-4)
 
-    train_dataset = HelloEvolweDataset(
+    dataset = HelloEvolweDataset(
         filename='../data/train.csv',
         label_tracker=LabelTracker()
     )
-    train_loader = DataLoader(train_dataset, **train_kwargs)
-    class_weights = train_dataset.get_class_weights()
 
-    scheduler = get_linear_schedule_with_warmup(optimizer, num_warmup_steps=0, num_training_steps=args['epochs'])
+    # splits
+    test_split_portion = 0.2
+    n_samples = len(dataset)
+    indices = list(range(n_samples))
+    split_idx = int(np.floor(test_split_portion * n_samples))
+
+    # shuffle
+    random_seed = 42
+    np.random.seed(random_seed)
+    np.random.shuffle(indices)
+
+    train_indices, test_indices = indices[split_idx:], indices[:split_idx]
+
+    # samplers
+    train_sampler = SubsetRandomSampler(train_indices)
+    test_sampler = SubsetRandomSampler(test_indices)
+
+    train_loader = DataLoader(dataset, sampler=train_sampler, **train_kwargs)
+    test_loader = DataLoader(dataset, sampler=test_sampler, **train_kwargs)
 
     # start where we ended last time
     # model.load_state_dict(torch.load('/content/snapshots/02-09-2022_19:01:31.pth'))
 
     for epoch in range(1, args['epochs'] + 1):
-        train(args, model, tokenizer, device, train_loader, optimizer, scheduler, epoch, class_weights)
+        train(args, model, tokenizer, device, train_loader, optimizer, epoch)
         torch.save(model.state_dict(), '../snapshots/' + datetime.now().strftime("%d-%m-%Y_%H:%M:%S") + '.pth')
-        # test(model, device, test_loader)
+        evaluate(args, model, tokenizer, device, test_loader)
 
 
 if __name__ == '__main__':
