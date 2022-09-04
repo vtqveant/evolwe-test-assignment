@@ -86,8 +86,8 @@ def main():
 
     # training settings
     args = {
-        'batch_size': 10,
-        'epochs': 20,
+        'batch_size': 8,
+        'epochs': 200,
         'lr': 1e-5,
         'log_interval': 10,
         'snapshot_interval': 100
@@ -126,10 +126,8 @@ def main():
     # also skip frozen parameters
     optimizer = AdamW(filter(lambda p: p.requires_grad, model.parameters()), lr=args['lr'], eps=1e-8, weight_decay=1e-4)
 
-    dataset = HelloEvolweDataset(
-        filename='../data/dataset.csv',
-        label_tracker=LabelTracker()
-    )
+    label_tracker = LabelTracker()
+    dataset = HelloEvolweDataset(filename='../data/dataset.csv', label_tracker=label_tracker)
 
     # splits
     test_split_portion = 0.2
@@ -156,9 +154,12 @@ def main():
 
     for epoch in range(1, args['epochs'] + 1):
         train(args, model, tokenizer, device, train_loader, optimizer, epoch)
-        torch.save(model.state_dict(), '../snapshots/' + datetime.now().strftime("%d-%m-%Y_%H:%M:%S") + '.pth')
+        if epoch % 10 == 0:
+            torch.save(model.state_dict(), '../snapshots/' + datetime.now().strftime("%d-%m-%Y_%H:%M:%S") + '_' + str(epoch) + '.pth')
         validation_loss, validation_accuracy = evaluate(model, tokenizer, device, test_loader)
         print("Eval. epoch {}:\tloss = {:.12f}, accuracy = {:.4f}".format(epoch, validation_loss, validation_accuracy))
+
+    torch.save(model.state_dict(), '../snapshots/' + datetime.now().strftime("%d-%m-%Y_%H:%M:%S") + '_last.pth')
 
 
 if __name__ == '__main__':
