@@ -41,12 +41,12 @@ def train(args, model, tokenizer, device, train_loader, optimizer, epoch):
         optimizer.step()
 
         if batch_idx % args['log_interval'] == 0:
-            print('Train Epoch: {} [{}/{} ({:.0f}%)]\tLoss: {:.12f}'.format(
-                epoch, batch_idx * len(texts), len(train_loader.dataset),
-                100. * batch_idx / len(train_loader), loss.item()))
+            print('Train epoch {} ({:.0f}%):\tloss: {:.12f}'.format(
+                epoch, 100. * batch_idx / len(train_loader), loss.item())
+            )
 
 
-def evaluate(args, model, tokenizer, device, test_loader):
+def evaluate(model, tokenizer, device, test_loader):
     model.eval()
 
     validation_accuracy = []
@@ -65,7 +65,7 @@ def evaluate(args, model, tokenizer, device, test_loader):
             return_tensors='pt'
         ).to(device)
 
-        with torch.no_grad:
+        with torch.no_grad():
             outputs = model(**encoded_input)
             logits = outputs['logits']
 
@@ -73,18 +73,11 @@ def evaluate(args, model, tokenizer, device, test_loader):
         loss = criterion(logits, labels)
         validation_loss.append(loss.item())
 
-        # Get the predictions
         predictions = torch.argmax(logits, dim=1).flatten()
+        accuracy = torch.eq(predictions, labels).cpu().numpy().mean()
+        validation_accuracy.append(accuracy)
 
-        # Calculate the accuracy rate
-        # accuracy = (predictions == labels).cpu().numpy().mean() * 100
-        # validation_accuracy.append(accuracy)
-
-    # Compute the average accuracy and loss over the validation set
-    validation_loss = np.mean(validation_loss)
-    validation_accuracy = np.mean(validation_accuracy)
-
-    return validation_loss, validation_accuracy
+    return np.mean(validation_loss), np.mean(validation_accuracy)
 
 
 def main():
@@ -104,7 +97,7 @@ def main():
     device = torch.device("cuda" if use_cuda else "cpu")
     print(f"INFO: Using {device} device")
 
-    train_kwargs = {'batch_size': args['batch_size'], 'shuffle': True}
+    train_kwargs = {'batch_size': args['batch_size'], 'shuffle': False}
     if use_cuda:
         train_kwargs.update({'num_workers': 0, 'pin_memory': True})
 
@@ -116,7 +109,7 @@ def main():
         output_attentions=False,
         output_hidden_states=False
     ).to(device)
-    print(model)
+    # print(model)
 
     # freeze (some) BERT layers to avoid GPU Out-of-Memory error
     for name, param in model.named_parameters():
@@ -134,7 +127,7 @@ def main():
     optimizer = AdamW(filter(lambda p: p.requires_grad, model.parameters()), lr=args['lr'], eps=1e-8, weight_decay=1e-4)
 
     dataset = HelloEvolweDataset(
-        filename='../data/train.csv',
+        filename='../data/dataset.csv',
         label_tracker=LabelTracker()
     )
 
@@ -159,12 +152,13 @@ def main():
     test_loader = DataLoader(dataset, sampler=test_sampler, **train_kwargs)
 
     # start where we ended last time
-    # model.load_state_dict(torch.load('/content/snapshots/02-09-2022_19:01:31.pth'))
+    # model.load_state_dict(torch.load('../snapshots/03-09-2022_22:38:04_e149_lr1e-6.pth'))
 
     for epoch in range(1, args['epochs'] + 1):
         train(args, model, tokenizer, device, train_loader, optimizer, epoch)
         torch.save(model.state_dict(), '../snapshots/' + datetime.now().strftime("%d-%m-%Y_%H:%M:%S") + '.pth')
-        evaluate(args, model, tokenizer, device, test_loader)
+        validation_loss, validation_accuracy = evaluate(model, tokenizer, device, test_loader)
+        print("Eval. epoch {}:\tloss = {:.12f}, accuracy = {:.4f}".format(epoch, validation_loss, validation_accuracy))
 
 
 if __name__ == '__main__':
